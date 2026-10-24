@@ -1,0 +1,36 @@
+Little Lemon API - local demonstration accounts
+================================================
+These are disposable LOCAL DEVELOPMENT credentials only. Change them before any real deployment.
+
+Admin/superuser:
+  username: admin
+  password: AdminDemo123!
+
+Manager:
+  username: manager
+  password: ManagerDemo123!
+
+Delivery crew:
+  username: delivery
+  password: DeliveryDemo123!
+
+Customer:
+  username: customer
+  password: CustomerDemo123!
+
+Create the database schema and demo data:
+  pipenv install
+  pipenv run python manage.py migrate
+  pipenv run python manage.py seed_demo
+  pipenv run python manage.py runserver
+
+Obtain an authentication token:
+  POST http://127.0.0.1:8000/auth/token/login/
+  JSON body: {"username":"manager","password":"ManagerDemo123!"}
+
+Use the returned auth_token in requests:
+  Authorization: Token YOUR_TOKEN
+
+Important:
+- This file contains example credentials for a local demo only.
+- Do not deploy with the sample SECRET_KEY or DEBUG=True.
